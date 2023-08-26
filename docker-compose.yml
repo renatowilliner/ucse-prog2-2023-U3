@@ -1,0 +1,23 @@
+version: '3'
+services:
+  c1:
+    build:
+      context: ./app1
+    ports:
+      - '4000:4000'
+    networks:
+      - myNetwork
+  c2:
+    build:
+      context: ./app2
+    ports:
+      - '4001:4001'
+    networks:
+      - myNetwork
+    depends_on:
+      - c1
+networks:
+  myNetwork:
+    driver: bridge
+
+
